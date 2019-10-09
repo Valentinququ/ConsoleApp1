@@ -10,41 +10,70 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Menü");
-            int auswahl;
-            string wiederholung;
-            Console.WriteLine("1: Aktion 1");
-            Console.WriteLine("2: Aktion 2");
-            Console.WriteLine("3: Aktion 3");
-            do
-        { 
-            Console.WriteLine("Aktion auswählen");
-            auswahl = Convert.ToInt32(Console.ReadLine());
-         
+             Console.WriteLine("Menü");
+             int auswahl;
+             string wiederholung;
+             Console.WriteLine("1: Dezimal zu biär");
+             Console.WriteLine("2: Aktion 2");
+             Console.WriteLine("3: Aktion 3");
+             do
+         { 
+             Console.WriteLine("Aktion auswählen");
+             auswahl = Convert.ToInt32(Console.ReadLine());
 
-            if (auswahl == 1)
-            {
-                Console.WriteLine("Blöd");
 
-            }
-            else if (auswahl == 2)
-            {
-                Console.WriteLine("Scheiße");
+             if (auswahl == 1)
+             {
+                    string eingabe, ausgabe="";
+                    int dez, quotient=1, rest;
+                    Console.WriteLine("Dezimalzahl eingeben");
+                    eingabe = Console.ReadLine();
+                    dez = Convert.ToInt32(eingabe);
 
-            }
-            else if (auswahl == 3)
-            {
-                Console.WriteLine("Fuck you");
-            }
-            else
-            {
-                Console.WriteLine("Ungültige Eingabe");
+                    while(quotient != 0)
+                    {
+                        quotient = dez / 2;
+                        rest = dez % 2;
+                        ausgabe += Convert.ToString(rest);
+                        dez = quotient;
 
-            }
-            Console.WriteLine("Neue Aktion auswählen(j/n)");
-            wiederholung = Console.ReadLine();
-        }while(wiederholung == "j");
+                    }
 
+                    string ausgabe_R = "";
+                    for (int i = ausgabe.Length-1; i>= 0; i--)
+                    {
+                        ausgabe_R += ausgabe[i];
+                    }
+
+                    Console.WriteLine(eingabe + "in binär:" + ausgabe_R);
+             }
+             else if (auswahl == 2)
+             {
+                    string eingabe;
+                    double dez=0;
+                 Console.WriteLine("Binärzahl eingeben:");
+                    eingabe = Console.ReadLine();
+
+                    for (int i = 0; i < eingabe.Length; i++) 
+                    {
+                        double faktor = Convert.ToDouble(Convert.ToString(eingabe[i]));
+                        double exponent = Convert.ToDouble(eingabe.Length - 1 - i);
+                        dez += faktor * Math.Pow(2, exponent);
+                    }
+             }
+             else if (auswahl == 3)
+             {
+                 Console.WriteLine("Fuck you");
+             }
+             else
+             {
+                 Console.WriteLine("Ungültige Eingabe");
+
+             }
+             Console.WriteLine("Neue Aktion auswählen(j/n)");
+             wiederholung = Console.ReadLine();
+         }while(wiederholung == "j");
+        
 
 
         }
